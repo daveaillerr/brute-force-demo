@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve static files (CSS)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 const VALID_EMAIL = "admin@dns.com";
 const VALID_PASSWORD = "password123";
@@ -17,7 +17,7 @@ const FLAG = "DNS{br00t3_f0rc3_succ3ss}";
 
 // Serve login page
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(process.cwd(), "index.html"));
 });
 
 // Handle login
