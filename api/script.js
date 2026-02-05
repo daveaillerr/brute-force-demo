@@ -2,14 +2,13 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve static files (CSS)
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, '../public')));
 
 const VALID_EMAIL = "admin@dns.com";
 const VALID_PASSWORD = "password123";
@@ -17,7 +16,7 @@ const FLAG = "DNS{br00t3_f0rc3_succ3ss}";
 
 // Serve login page
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 // Handle login
@@ -30,7 +29,7 @@ app.post("/login", (req, res) => {
             <html>
             <head>
                 <title>Success</title>
-                <link rel="stylesheet" href="style.css">
+                <link rel="stylesheet" href="/style.css">
             </head>
             <body>
                 <div id="login_container">
@@ -49,7 +48,7 @@ app.post("/login", (req, res) => {
             <html>
             <head>
                 <title>Login Failed</title>
-                <link rel="stylesheet" href="style.css">
+                <link rel="stylesheet" href="/style.css">
             </head>
             <body>
                 <div id="login_container">
@@ -65,6 +64,12 @@ app.post("/login", (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// Export the Express app for Vercel
+module.exports = app;
+
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
