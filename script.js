@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve static files (CSS)
-app.use(express.static(path.join(__dirname, "style.css")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const VALID_EMAIL = "admin@dns.com";
 const VALID_PASSWORD = "password123";
@@ -30,7 +30,7 @@ app.post("/login", (req, res) => {
             <html>
             <head>
                 <title>Success</title>
-                <link rel="stylesheet" href="index.css">
+                <link rel="stylesheet" href="style.css">
             </head>
             <body>
                 <div id="login_container">
@@ -49,7 +49,7 @@ app.post("/login", (req, res) => {
             <html>
             <head>
                 <title>Login Failed</title>
-                <link rel="stylesheet" href="index.css">
+                <link rel="stylesheet" href="style.css">
             </head>
             <body>
                 <div id="login_container">

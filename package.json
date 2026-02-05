@@ -1,0 +1,25 @@
+{
+  "name": "brute-force-login",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/daveaillerr/brute-force-demo#readme",
+  "bugs": {
+    "url": "https://github.com/daveaillerr/brute-force-demo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daveaillerr/brute-force-demo.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js",
+    "dev": "node script.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
